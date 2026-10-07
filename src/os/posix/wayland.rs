@@ -1264,17 +1264,8 @@ impl Window {
                     use wayland_client::protocol::wl_pointer::Axis;
 
                     match axis {
-                        WEnum::Value(Axis::VerticalScroll) => self.scroll_y = value as f32,
-                        WEnum::Value(Axis::HorizontalScroll) => self.scroll_x = value as f32,
-                        _ => {}
-                    }
-                }
-                Event::AxisStop { axis, .. } => {
-                    use wayland_client::protocol::wl_pointer::Axis;
-
-                    match axis {
-                        WEnum::Value(Axis::VerticalScroll) => self.scroll_y = 0.,
-                        WEnum::Value(Axis::HorizontalScroll) => self.scroll_x = 0.,
+                        WEnum::Value(Axis::VerticalScroll) => self.scroll_y += value as f32,
+                        WEnum::Value(Axis::HorizontalScroll) => self.scroll_x += value as f32,
                         _ => {}
                     }
                 }

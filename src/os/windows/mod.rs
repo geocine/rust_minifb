@@ -228,7 +228,7 @@ unsafe extern "system" fn wnd_proc(
 
         winuser::WM_MOUSEWHEEL => {
             let scroll = ((((wparam as u32) >> 16) & 0xffff) as i16) as f32 * 0.1;
-            wnd.mouse.scroll = scroll;
+            wnd.mouse.scroll += scroll;
         }
 
         winuser::WM_SETCURSOR => {
